@@ -8,13 +8,13 @@ public class User {
 	private String username;
 	private String password;
 	private String nickname;
-	private Date birthday;
-	private String gender;
+	private String birthday;
+	private Integer gender;
 	private String locked;
-	private Date create_time;
-	private Date update_time;
+	private String create_time;
+	private String update_time;
 	private String url;
-	private String score;
+	private Integer score;
 	private String role;
 	public Integer getId() {
 		return id;
@@ -40,16 +40,16 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public String getGender() {
+	public Integer getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 	public String getLocked() {
@@ -58,16 +58,16 @@ public class User {
 	public void setLocked(String locked) {
 		this.locked = locked;
 	}
-	public Date getCreate_time() {
+	public String getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
-	public Date getUpdate_time() {
+	public String getUpdate_time() {
 		return update_time;
 	}
-	public void setUpdate_time(Date update_time) {
+	public void setUpdate_time(String update_time) {
 		this.update_time = update_time;
 	}
 	public String getUrl() {
@@ -76,10 +76,10 @@ public class User {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getScore() {
+	public Integer getScore() {
 		return score;
 	}
-	public void setScore(String score) {
+	public void setScore(Integer score) {
 		this.score = score;
 	}
 	public String getRole() {
@@ -88,15 +88,8 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", nickname=" + nickname
-				+ ", birthday=" + birthday + ", gender=" + gender + ", locked=" + locked + ", create_time="
-				+ create_time + ", update_time=" + update_time + ", url=" + url + ", score=" + score + ", role=" + role
-				+ "]";
-	}
-	public User(Integer id, String username, String password, String nickname, Date birthday, String gender,
-			String locked, Date create_time, Date update_time, String url, String score, String role) {
+	public User(Integer id, String username, String password, String nickname, String birthday, Integer gender,
+			String locked, String create_time, String update_time, String url, Integer score, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -114,10 +107,11 @@ public class User {
 	public User() {
 		super();
 	}
-	
-	
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", nickname=" + nickname
+				+ ", birthday=" + birthday + ", gender=" + gender + ", locked=" + locked + ", create_time="
+				+ create_time + ", update_time=" + update_time + ", url=" + url + ", score=" + score + ", role=" + role
+				+ "]";
+	}
 }

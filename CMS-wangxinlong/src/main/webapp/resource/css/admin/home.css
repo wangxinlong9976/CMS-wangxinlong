@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.loginBtnGroup{
+	border-top: 1px solid #eaeaea;
+}
+*{
+		
+	}
+	a{
+		color: #fff;
+	}
+	a:hover{
+		color: #E0A800;
+	}
+	.nav_top{
+		height: 60px;
+		line-height: 40px;
+	}
+	#nav_top .nva-link{
+		color:#fff;
+	}
+	.leftNav a{
+		background-color: #000; /*#343A40*/
+		height:80.20px;
+		border-radius: 0px;
+		text-align: center;
+		line-height: 60px;
+	}
+	.leftNav_content{
+		margin-left:-30px;
+		background-color: #e0e0e0;
+	}
+	.leftNav_content div{
+		/*style="*/
+		background-color: #ECECF6;
+		/*margin-left:-30px;*/
+		height:641px;
+	}
+	#contentPointCut{
+		height: 641px;
+		background-color: #ECECF6;
+	}
+	
+.content_card{
+	margin-left:-15px;
+	height: 85px; 
+}

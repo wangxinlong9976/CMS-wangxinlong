@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxl.cms.dao.AdminDao">
+
+	<select id="userIsExis" resultType="User">
+		select * from cms_user where username=#{user.username} and password=#{user.password} and role=1
+	</select>
+	
+	<select id="selectUser" resultType="User">
+		select * from cms_user
+		<where>
+			<if test="keyWord!=null and keyWord!=''">
+				and username like '%${keyWord}%'
+			</if>
+			<if test="nickName!=null and nickName!=''">
+				or nickname like '%${nickName}%'
+			</if>
+		</where>
+	</select>
+	
+	<update id="lockedStatus">
+		update cms_user set locked=#{status} where id=#{id}
+	</update>
+	
+	
+	<select id="getUserById" resultType="User">
+		select * from cms_user where id=#{id}
+	</select>
+	
+	
+	<select id="selectChannel" resultType="Channel">
+		select * from cms_channel
+	</select>
+	
+	<select id="selectCategory" resultType="Category">
+		<if test="channelId!=null and channelId!=''">
+			select * from cms_category where channel_id = #{channelId}
+		</if>
+	</select>
+</mapper>

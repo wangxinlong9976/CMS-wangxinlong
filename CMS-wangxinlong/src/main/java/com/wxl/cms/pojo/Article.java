@@ -1,7 +1,5 @@
 package com.wxl.cms.pojo;
 
-import java.util.Date;
-
 public class Article {
 	private Integer id;
 	private String title;
@@ -14,15 +12,18 @@ public class Article {
 	private Integer hot;
 	private Integer status;
 	private Integer deleted;
-	private Date created;
-	private Date updated;
-	private String commentCnt;
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", content=" + content + ", picture=" + picture
-				+ ", channel_id=" + channel_id + ", category_id=" + category_id + ", user_id=" + user_id + ", hits="
-				+ hits + ", hot=" + hot + ", status=" + status + ", deleted=" + deleted + ", created=" + created
-				+ ", updated=" + updated + ", commentCnt=" + commentCnt + "]";
+	private String created;
+	private String updated;
+	private Integer commentCnt;
+	private Channel channel;
+	private Category category;
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public Integer getId() {
 		return id;
@@ -90,27 +91,41 @@ public class Article {
 	public void setDeleted(Integer deleted) {
 		this.deleted = deleted;
 	}
-	public Date getCreated() {
+	public String getCreated() {
 		return created;
 	}
-	public void setCreated(Date created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
-	public Date getUpdated() {
+	public String getUpdated() {
 		return updated;
 	}
-	public void setUpdated(Date updated) {
+	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-	public String getCommentCnt() {
+	public Integer getCommentCnt() {
 		return commentCnt;
 	}
-	public void setCommentCnt(String commentCnt) {
+	public void setCommentCnt(Integer commentCnt) {
 		this.commentCnt = commentCnt;
 	}
+	
+	public Channel getChannel() {
+		return channel;
+	}
+	public void setChannel(Channel channel) {
+		this.channel = channel;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
 	public Article(Integer id, String title, String content, String picture, Integer channel_id, Integer category_id,
-			Integer user_id, Integer hits, Integer hot, Integer status, Integer deleted, Date created, Date updated,
-			String commentCnt) {
+			Integer user_id, Integer hits, Integer hot, Integer status, Integer deleted, String created, String updated,
+			Integer commentCnt, Channel channel, Category category,User user) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -126,13 +141,20 @@ public class Article {
 		this.created = created;
 		this.updated = updated;
 		this.commentCnt = commentCnt;
+		this.channel = channel;
+		this.category = category;
+		this.user=user;
 	}
 	public Article() {
 		super();
 	}
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", content=" + content + ", picture=" + picture
+				+ ", channel_id=" + channel_id + ", category_id=" + category_id + ", user_id=" + user_id + ", hits="
+				+ hits + ", hot=" + hot + ", status=" + status + ", deleted=" + deleted + ", created=" + created
+				+ ", updated=" + updated + ", commentCnt=" + commentCnt + ", channel=" + channel + ", category="
+				+ category + ", user=" + user+"]";
+	}
 
 }

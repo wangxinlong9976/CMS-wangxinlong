@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.wxl.cms.pojo.Category;
+import com.wxl.cms.pojo.Channel;
+import com.wxl.cms.pojo.Conditions;
 import com.wxl.cms.pojo.User;
 
-public interface UserService {
+public interface AdminService {
 	
 	/**
 	 * 
+	 * @param con 
 	 * @Title: selectUser
 	 * @Description: TODO	查询所有的user
 	 * @param user
@@ -17,7 +21,7 @@ public interface UserService {
 	 * List<User>    
 	 *
 	 */
-	List<User> selectUser(@Param("user")User user);
+	List<User> selectUser(Conditions con);
 	
 	/**
 	 * 
@@ -98,4 +102,36 @@ public interface UserService {
 	 *
 	 */
 	boolean userIsExis(@Param("user")User user);
+
+	/**
+	 * 	
+	 * @Title: lockedStatus
+	 * @Description: TODO	通过id和状态修改 用户的禁用状态
+	 * @param id
+	 * @param status
+	 * @return    
+	 * boolean    
+	 *
+	 */
+	boolean lockedStatus(Integer id, Integer status);
+
+	/**
+	 * 
+	 * @Title: selectChannel
+	 * @Description: TODO		查询全部的频道
+	 * @return    
+	 * List<Channel>    
+	 *
+	 */
+	List<Channel> selectChannel();
+
+	/**
+	 * 
+	 * @Title: selectCategory
+	 * @Description: TODO	通过频道(channel的id查询所有的分类)
+	 * @return    
+	 * List<Category>    
+	 *
+	 */
+	List<Category> selectCategory(Integer channelId);
 }

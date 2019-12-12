@@ -5,25 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wxl.cms.dao.UserDao;
+import com.wxl.cms.dao.AdminDao;
+import com.wxl.cms.pojo.Category;
+import com.wxl.cms.pojo.Channel;
+import com.wxl.cms.pojo.Conditions;
 import com.wxl.cms.pojo.User;
-import com.wxl.cms.service.UserService;
+import com.wxl.cms.service.AdminService;
+
 @Service
-public class UserServiceImpl implements UserService{
+public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
-	private UserDao userDao;
+	private AdminDao adminDao;
 
 	@Override
-	public List<User> selectUser(User user) {
+	public List<User> selectUser(Conditions con) {
 		// TODO Auto-generated method stub
-		return null;
+		return adminDao.selectUser(con);
 	}
 
 	@Override
 	public User getUserById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return adminDao.getUserById(id);
 	}
 
 	@Override
@@ -59,6 +63,26 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean userIsExis(User user) {
 		// TODO Auto-generated method stub
-		return false;
+		return adminDao.userIsExis(user)==null;
 	}
+
+	@Override
+	public boolean lockedStatus(Integer id, Integer status) {
+		// TODO Auto-generated method stub
+		
+		return adminDao.lockedStatus(id,status)>0;
+	}
+
+	@Override
+	public List<Channel> selectChannel() {
+		// TODO Auto-generated method stub
+		return adminDao.selectChannel();
+	}
+
+	@Override
+	public List<Category> selectCategory(Integer channelId) {
+		// TODO Auto-generated method stub
+		return adminDao.selectCategory(channelId);
+	}
+	
 }
