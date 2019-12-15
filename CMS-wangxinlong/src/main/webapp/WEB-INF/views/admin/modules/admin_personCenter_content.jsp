@@ -4,7 +4,7 @@
 	<div class="row person_center_row">
 		<div class="col-2">
 			<label class="person_center_text">
-				网站域名:
+				昵称:
 			</label>
 		</div>
 		<div class="col-9">
@@ -15,7 +15,7 @@
 	<div class="row person_center_row" >
 		<div class="col-2">
 			<label  class="person_center_text">
-				网站名称:
+				密码:
 			</label>
 		</div>
 		<div class="col-9">
@@ -26,10 +26,13 @@
 	<div class="row person_center_row" style="margin-bottom:10px">
 		<div class="col-2">
 			<label  class="person_center_text">
-				网站域名:
+				:
 			</label>
 		</div>
 		<div class="col-9">
 			<input type="text" class="form-control" />
 		</div>
+	</div>
+	<div>
+		
 	</div>

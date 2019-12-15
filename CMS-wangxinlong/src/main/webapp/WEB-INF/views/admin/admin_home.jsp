@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resource/css/admin/personCenter.css">
 <link rel="stylesheet" href="/resource/css/admin/home.css">
 
+
 <style type="text/css">
 	*{
 		
@@ -86,6 +87,7 @@
 <script type="text/javascript" src="/resource/bootstrap/jquery.min.1.12.4.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/chart.min.js"></script>
+<script type="text/javascript" src="/resource/bootstrap/ajaxfileupload.js"></script>
 <script type="text/javascript" src="/resource/js/admin/checkUserInfo.js"></script>
 <script type="text/javascript" src="/resource/js/admin/home.js"></script>
 

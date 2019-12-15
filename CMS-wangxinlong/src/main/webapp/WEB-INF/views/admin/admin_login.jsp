@@ -15,7 +15,7 @@
 </style>
 </head>
 <body style="background: url(/resource/img/38fca844b7154089d675fa45597f4313.jpg) no-repeat fixed top;background-size:100%;">
-<form class="form form-group" id="loginForm" action="/admin/login" method="post">
+<form class="form form-group" id="loginForm"  method="post">
 	<div class="modal-dialog" style="margin-top: 13%;">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -29,19 +29,30 @@
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="请输入密码" autocomplete="off" name="password" id=""/>
 					</div>
+					<span id="error" class="text-danger"></span>
 			</div>
 			<div class="modal-body loginBtnGroup">
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary form-control" id="loginBtn" value="登陆"/>
+					<input type="button" class="btn btn-primary form-control" id="loginBtn" value="登陆"/>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-<script type="text/javascript" src="/resource/bootstrap/jquery-3.4.1.slim.min.js"></script>
+<script type="text/javascript" src="/resource/bootstrap/jquery.min.1.12.4.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resource/js/login.js"></script>
 <script type="text/javascript">
+	$('#loginBtn').click(function(){
+		$.post("/admin/login",$('#loginForm').serialize(),function(obj){
+			alert(JSON.stringify(obj));
+			if(!obj.result){
+				$('#error').html(obj.message);
+			}else{
+				location="/admin/home";
+			}
+		},"json");
+	});
 </script>
 </body>
 </html>

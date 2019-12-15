@@ -4,15 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.wxl.cms.pojo.Category;
-import com.wxl.cms.pojo.Channel;
-import com.wxl.cms.pojo.Conditions;
 import com.wxl.cms.pojo.User;
 
-public interface AdminDao {
+public interface UserIndexDao {
 	/**
 	 * 
-	 * @param con 
 	 * @Title: selectUser
 	 * @Description: TODO	查询所有的user
 	 * @param user
@@ -20,7 +16,7 @@ public interface AdminDao {
 	 * List<User>    
 	 *
 	 */
-	List<User> selectUser(Conditions con);
+	List<User> selectUser(@Param("user")User user);
 	
 	/**
 	 * 
@@ -90,48 +86,4 @@ public interface AdminDao {
 	 *
 	 */
 	Integer updateUser(@Param("user")User user);
-	
-	/**
-	 * 
-	 * @Title: userIsExis
-	 * @Description: TODO	查询用户是否存在
-	 * @param user
-	 * @return    
-	 * boolean    
-	 *
-	 */
-	User userIsExis(@Param("user")User user);
-
-	/**
-	 * 	
-	 * @Title: lockedStatus
-	 * @Description: TODO			修改用户的禁用状态
-	 * @param id
-	 * @param status
-	 * @return    
-	 * int    
-	 *
-	 */
-	int lockedStatus(@Param("id")Integer id, @Param("status")Integer status);
-	
-	/**
-	 * 
-	 * @Title: selectChannel
-	 * @Description: TODO		查询所有的频道
-	 * @return    
-	 * List<Channel>    
-	 *
-	 */
-	List<Channel> selectChannel();
-
-	/**
-	 * 	
-	 * @Title: selectCategory
-	 * @Description: TODO		查询所有的分类  通过频道id
-	 * @param channelId
-	 * @return    
-	 * List<Category>    
-	 *
-	 */
-	List<Category> selectCategory(@Param("channelId")Integer channelId);
 }

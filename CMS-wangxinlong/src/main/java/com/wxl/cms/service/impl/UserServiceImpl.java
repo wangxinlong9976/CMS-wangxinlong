@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wxl.cms.dao.UserDao;
+import com.wxl.cms.dao.UserLoginDao;
 import com.wxl.cms.pojo.User;
 import com.wxl.cms.service.UserService;
 @Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
-	private UserDao userDao;
+	private UserLoginDao userDao;
 
 	@Override
 	public List<User> selectUser(User user) {

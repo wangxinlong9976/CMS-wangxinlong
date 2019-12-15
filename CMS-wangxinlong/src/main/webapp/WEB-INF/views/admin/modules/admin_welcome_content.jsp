@@ -4,7 +4,7 @@
 	<div class="clear"></div>
 	<div class="col-12">
 		<marquee>[系统消息]:xxxxxxxxxxxxxxxxxxxxxx</marquee>
-		<p class="alert alert-primary text-center" style="margin-top: 20px;">欢迎  <span class="text-danger">${userName}</span>  进入CMS管理系统</p>
+		<p class="alert alert-primary text-center" style="margin-top: 20px;">欢迎  <span class="text-danger">${adminSession.username}</span>  进入CMS管理系统</p>
 	</div>
 </div>
 <div class="row">
@@ -30,7 +30,7 @@
 		               <div class="row">
 		              		 <div class="col-12 txt-center">
 		               			网站访问量:
-		            			<span></span>
+		            			<span class="text-red" id="visitor">${persons}</span>
 		               		</div>	
 		               </div>
 	              </div>
@@ -41,7 +41,18 @@
       	<div class="card" >
 	         <div class="card-body" >
 		          <div class="content_card">
-		            	
+		            	<div class="row">
+		               		<div class="col-12 txt-center">
+		               			<label>Logo</label>
+		               		</div>
+		            		
+		               </div>
+		               <div class="row">
+		              		 <div class="col-12 txt-center">
+		               			当前在线人数:
+		            			<span class="text-red" id="visitor">${persons}</span>
+		               		</div>	
+		               </div>
 		          </div>
 	         </div>
       </div>

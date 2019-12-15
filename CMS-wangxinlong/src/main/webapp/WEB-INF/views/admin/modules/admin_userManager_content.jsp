@@ -97,6 +97,6 @@ $('#checks').click(function(){
 
 /*查看用户信息*/
 function check(id){
-	getHtml("/admin/checkUserInfo?id="+id);
+	getHtml("/admin/userManager/checkUserInfo?id="+id);
 }
 </script>

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wxl.cms.dao.AdminDao">
-
-	<select id="userIsExis" resultType="User">
-		select * from cms_user where username=#{user.username} and password=#{user.password} and role=1
-	</select>
+<mapper namespace="com.wxl.cms.dao.AdminUserManagerDao">
 	
 	<select id="selectUser" resultType="User">
 		select * from cms_user
@@ -29,13 +25,4 @@
 	</select>
 	
 	
-	<select id="selectChannel" resultType="Channel">
-		select * from cms_channel
-	</select>
-	
-	<select id="selectCategory" resultType="Category">
-		<if test="channelId!=null and channelId!=''">
-			select * from cms_category where channel_id = #{channelId}
-		</if>
-	</select>
 </mapper>

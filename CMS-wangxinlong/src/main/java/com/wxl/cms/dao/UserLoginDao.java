@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.wxl.cms.pojo.User;
 
-public interface UserDao {
+public interface UserLoginDao {
 	/**
 	 * 
 	 * @Title: selectUser
