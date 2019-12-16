@@ -16,4 +16,10 @@ public class SettingManagerController {
 	private AdminSettingService adminService;
 	
 	
+	@RequestMapping("/setting")
+	public String inSetting() {
+		
+		return "/admin/modules/admin_systemSetting_content";
+	}
+	
 }

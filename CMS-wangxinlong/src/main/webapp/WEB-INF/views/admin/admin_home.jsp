@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resource/editor/default/default.css" >
 <link rel="stylesheet" href="/resource/css/admin/personCenter.css">
 <link rel="stylesheet" href="/resource/css/admin/home.css">
 
@@ -76,7 +77,7 @@
 	    		<a class="nav-link" id="" url="/admin/" style="border-radius: 0px;">暂空</a>
 		      	<a class="nav-link" id="" url="/admin/" style="border-radius: 0px;">暂空</a>
 		      	<a class="nav-link" id="" url="/admin/personCenter" style="border-radius: 0px;">个人中心</a>
-		      	<a class="nav-link" id="" url="/admin/systemManager" style="border-radius: 0px;">系统设置</a>
+		      	<a class="nav-link" id="" url="/admin/setting" style="border-radius: 0px;">系统设置</a>
 	  	 	 </div>
 	 	 </div>
   		<div class="col-8 overflow-auto" id="contentPointCut">
@@ -90,6 +91,8 @@
 <script type="text/javascript" src="/resource/bootstrap/ajaxfileupload.js"></script>
 <script type="text/javascript" src="/resource/js/admin/checkUserInfo.js"></script>
 <script type="text/javascript" src="/resource/js/admin/home.js"></script>
+<script charset="utf-8" src="/resource/editor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="/resource/editor/lang/zh-CN.js"></script>
 
 <script type="text/javascript">
 

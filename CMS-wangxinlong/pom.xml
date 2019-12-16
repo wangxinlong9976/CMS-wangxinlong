@@ -34,7 +34,11 @@
 
 	<!-- jar依赖 -->
 	<dependencies>
-	
+		<dependency>
+			<groupId>com.wangxl.common</groupId>
+			  <artifactId>common-utils</artifactId>
+			  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- 解决冲突的依赖 -->
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -317,7 +321,7 @@
 		</dependency>
 
 		<!-- 富文本编辑器使用该文件上传 -->
-	<!-- 	<dependency>
+		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
@@ -327,7 +331,7 @@
 			<artifactId>gson</artifactId>
 			<version>2.8.5</version>
 		</dependency>
-		<dependency>
+<!-- 		<dependency>
 			<groupId>com.bobo</groupId>
 			<artifactId>bobo-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
