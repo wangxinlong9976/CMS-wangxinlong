@@ -38,7 +38,8 @@ public class ArticleManagerController {
 	 */
 	@RequestMapping("/articleManager")
 	public String inArticleManager(Model model,ConditionsArticleManager con) {
-//		PageHelper.startPage(con.getCurrPage(),3);
+		System.out.println("-+++++"+con);
+		PageHelper.startPage(con.getCurrPage(),3);
 		List<Article> list = adminArticleManagerService.selectArticle(con);
 		
 		List<Channel> channels = adminArticleManagerService.selectChannel();
@@ -46,10 +47,11 @@ public class ArticleManagerController {
 			List<Category> categorys = adminArticleManagerService.selectCategory(con.getChannel());
 			model.addAttribute("categorys", categorys);
 		}
-//		PageInfo<Article> pageInfo = new PageInfo<>(list);
+		PageInfo<Article> pageInfo = new PageInfo<>(list);
 		model.addAttribute("list", list);
 		model.addAttribute("con", con);
 		model.addAttribute("channels", channels);
+		model.addAttribute("pageInfo", pageInfo);
 		
 		return "admin/modules/admin_articleManager_content";
 	}
@@ -92,4 +94,18 @@ public class ArticleManagerController {
 		return categorys;
 	}
 	
+	
+	
+	@RequestMapping("/articleManager/setHot")
+	public String setHot(String article_id) {
+		Integer status = adminArticleManagerService.setHot(article_id);
+		return "redirect:/admin/articleManager";
+	}
+
+	@ResponseBody
+	@RequestMapping("/articleManager/status")
+	public boolean status(Integer article_id) {
+		boolean bool = adminArticleManagerService.status(article_id);
+		return bool;
+	}
 }

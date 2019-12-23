@@ -35,6 +35,19 @@ public class AdminArticleManagerServiceImpl implements AdminArticleManagerServic
 	@Override
 	public List<Article> selectArticle(ConditionsArticleManager con) {
 		// TODO Auto-generated method stub
+		System.out.println(con);
 		return articleManagerDao.selectArticle(con);
+	}
+
+	@Override
+	public Integer setHot(String article_id) {
+		// TODO Auto-generated method stub
+		return articleManagerDao.setHot(article_id);
+	}
+
+	@Override
+	public boolean status(Integer article_id) {
+		// TODO Auto-generated method stub
+		return articleManagerDao.status(article_id)>0;
 	}
 }

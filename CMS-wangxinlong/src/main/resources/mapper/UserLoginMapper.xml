@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wxl.cms.dao.UserDao">
-	
+<mapper namespace="com.wxl.cms.dao.UserLoginDao">
+	<select id="userIsExis" resultType="User">
+		select * from cms_user where username=#{username} and password=#{password}
+	</select>
+	<insert id="registerUser">
+		insert into cms_user(username,password,create_time,update_time) values(#{username},#{password},#{create_time},#{update_time})
+	</insert>
 </mapper>

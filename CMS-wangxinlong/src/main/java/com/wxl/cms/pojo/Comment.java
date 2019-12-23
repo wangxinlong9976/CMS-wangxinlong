@@ -8,6 +8,13 @@ public class Comment {
 	private Integer userid;
 	private String content;
 	private Date created;
+	private User user;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -43,13 +50,15 @@ public class Comment {
 		return "Comment [id=" + id + ", articleid=" + articleid + ", userid=" + userid + ", content=" + content
 				+ ", created=" + created + "]";
 	}
-	public Comment(Integer id, Integer articleid, Integer userid, String content, Date created) {
+	
+	public Comment(Integer id, Integer articleid, Integer userid, String content, Date created, User user) {
 		super();
 		this.id = id;
 		this.articleid = articleid;
 		this.userid = userid;
 		this.content = content;
 		this.created = created;
+		this.user = user;
 	}
 	public Comment() {
 		super();

@@ -86,4 +86,8 @@ public interface UserLoginDao {
 	 *
 	 */
 	Integer updateUser(@Param("user")User user);
+
+	User userIsExis(User user);
+
+	int registerUser(User user);
 }

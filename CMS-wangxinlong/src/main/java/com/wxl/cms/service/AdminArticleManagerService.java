@@ -39,4 +39,8 @@ public interface AdminArticleManagerService {
 	 *
 	 */
 	List<Article> selectArticle(ConditionsArticleManager con);
+
+	Integer setHot(String article_id);
+
+	boolean status(Integer article_id);
 }

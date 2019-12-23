@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.wxl.cms.common.JsonResult;
 import com.wxl.cms.pojo.User;
 
 public interface UserService {

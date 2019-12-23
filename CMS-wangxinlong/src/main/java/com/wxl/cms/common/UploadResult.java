@@ -2,13 +2,13 @@ package com.wxl.cms.common;
 
 public class UploadResult {
 	
-	private String url;
+	private String message;
 	private Integer error;
-	public String getUrl() {
-		return url;
+	public String getmessage() {
+		return message;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setmessage(String message) {
+		this.message = message;
 	}
 	public Integer getError() {
 		return error;
@@ -16,9 +16,9 @@ public class UploadResult {
 	public void setError(Integer error) {
 		this.error = error;
 	}
-	public UploadResult(String url, Integer error) {
+	public UploadResult(String message, Integer error) {
 		super();
-		this.url = url;
+		this.message = message;
 		this.error = error;
 	}
 	public UploadResult() {
@@ -26,6 +26,6 @@ public class UploadResult {
 	}
 	@Override
 	public String toString() {
-		return "UploadResult [url=" + url + ", error=" + error + "]";
+		return "UploadResult [message=" + message + ", error=" + error + "]";
 	}
 }

@@ -5,7 +5,9 @@
 <input type="hidden" id="cha" value="${con.channel}"/>
 <input type="hidden" id="cat" value="${con.category}"/>
 <input type="hidden" id="sta" value="${con.status}"/>
-<form action="/admin/articleManager" method="post" id="formData">
+<!-- action="/admin/articleManager" method="post"
+ --><form  id="formData">
+	<input type="hidden" value="${currPage}" id="currPage" name="currPage"/>
 	<div class="row">
 		<div class="col-1">
 			<label style="float:right;line-height: 40px;">
@@ -13,7 +15,7 @@
 			</label>
 		</div>
 		<div class="col-2">
-			<input type="text" class="form-control" style="margin-left:-20px" placeholder="请输入关键字.." name="keyWord" value="${con.keyWord}"/>
+			<input type="text" class="form-control" style="margin-left:-20px;" placeholder="请输入关键字.." name="keyWord" value="${con.keyWord}" />
 		</div>
 		<div class="col-1">
 			<label style="float:left;line-height: 40px;margin-left:-33px">
@@ -104,7 +106,7 @@
 				<tr>
 					<td><input type="checkbox"/></td>
 					<td>${statu.count}</td>
-					<td>${article.title}</td>
+					<td overflow="hidden">${article.title}</td>
 					<td>${article.channel.name}</td>
 					<td>${article.category.name}</td>
 					<td>${article.created}</td>
@@ -112,13 +114,13 @@
 					<td>${article.hot>=1?"是":"否"}</td>
 					<td>${article.status==0?"未审核":article.status==1?"已审核":"审核未通过"}</td>
 					<td>
-						<input type="button" value="查看" class="btn btn-success" onclick="checkArticle(${article.id})"/>
-						<input type="button" value="热点" class="btn btn-warning" onclick="setHost(${article.id})"/>
+						<input type="button" value="查看" class="btn btn-success" id="modal" onclick="checkArticle(${article.id})"/>
+						<input type="button" value="热点" class="btn btn-warning" onclick="setHot(${article.id})"/>
 						<c:if test="${article.status==0 || article.status>1}">
-							<input type="button" value="审核" class="btn btn-primary" onclick="articleStatus(${article.status},1)"/>
+							<input type="button" value="审核" class="btn btn-primary" onclick="articleStatus(${article.id})"/>
 						</c:if>
 						<c:if test="${article.status==1}">
-							<input type="button" disable value="已审核" class="btn btn-primary" onclick="articleStatus(${article.status},1)"/>
+							<input type="button" disabled='disabled' value="已审核" class="btn btn-primary" onclick="articleStatus(${article.id},1)"/>
 						</c:if>
 					</td>
 				</tr>
@@ -127,7 +129,8 @@
 	</table>
 	<div class="row">
 		<div class="" style="margin:0 auto;">
-			<nav aria-label="Page navigation example " id="pagenation">
+			<jsp:include page="../../common/pagenation.jsp"></jsp:include>
+			<%-- <nav aria-label="Page navigation example " id="pagenation">
 			  	<ul class="pagination">
 				    <li class="page-item">
 				      <a class="page-link" href="#" aria-label="Previous" onclick="pageUtil(pageUtil(${pageInfo.prePage==0?1:pageInfo.prePage}))">
@@ -145,17 +148,37 @@
 				      </a>
 				    </li>
 		 		</ul>
-			</nav>
+			</nav> --%>
 		</div>
 	</div>
 <script type="text/javascript" src="/resource/js/admin/articleManager.js"></script>
 <script type="text/javascript">
-$('#queryBtn_article').click(function(){
-	getHtml("/admin/articleManager",$('#formData').serialize());
+$(function(){
+	$('#queryBtn_article').click(function(){
+		getHtml("/admin/articleManager",$('#formData').serialize());
+	});
 });
+function pageUtil(page){
+	$('#currPage').val(page);
+	getHtml("/admin/articleManager",$('#formData').serialize());
+	/* $('#formData').submit(); */
+}
 $(function(){
 	$('#channel').val($('#cha').val());
 	$('#category').val($('#cat').val());
 	$('#status').val($('#sta').val());
 });
+
+function articleStatus(id){
+	$.post("/admin/articleManager/status",{article_id:id},function(res){
+		if(res){
+			alert("审核成功!");
+			getHtml("/admin/articleManager");
+		}
+	},"json");
+}
+function setHot(id){
+	getHtml("/admin/articleManager/setHot",{article_id:id,currPage:$('#currPage').val()});
+}
+
 </script>

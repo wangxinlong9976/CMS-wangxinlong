@@ -23,13 +23,13 @@
 				and cms_article.title like '%${keyWord}%'
 			</if>
 			<if test="channel!=null and channel!=0">
-				and cms_channel.id=${channel}
+				and cms_article.channel.id=${channel}
 			</if>
 			<if test="category!=null and category!=0">
-				and cms_category.id=${category}
+				and cms_article.category_id=${category}
 			</if>
-			<if test="status!=null and status!=0">
-			and cms_article.status=${status}
+			<if test="status!=null">
+				and cms_article.status=${status}
 			</if>
 		</where>
 	</select>
@@ -61,4 +61,12 @@
 			<result property="nickname" column="nickname"/>
 		</association>
 	</resultMap>
+	
+	<update id="setHot">
+		update cms_article set hot = (hot+1) where id=#{id}
+	</update>
+	
+	<update id="status">
+		update cms_article set status=1 where id=${value}
+	</update>
 </mapper>

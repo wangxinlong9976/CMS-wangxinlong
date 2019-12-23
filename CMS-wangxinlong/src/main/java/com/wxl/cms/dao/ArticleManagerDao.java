@@ -43,4 +43,8 @@ public interface ArticleManagerDao {
 	 *
 	 */
 	List<Article> selectArticle(ConditionsArticleManager con);
+
+	Integer setHot(String id);
+
+	int status(Integer article_id);
 }

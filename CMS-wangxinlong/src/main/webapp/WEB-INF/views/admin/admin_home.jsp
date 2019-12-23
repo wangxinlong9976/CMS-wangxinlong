@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="java.util.Random" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -7,10 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resource/editor/default/default.css" >
-<link rel="stylesheet" href="/resource/css/admin/personCenter.css">
-<link rel="stylesheet" href="/resource/css/admin/home.css">
-
+<link rel="stylesheet" href="/resource/editor/plugins/code/prettify.css" >
+<link rel="stylesheet" href="/resource/css/admin/personCenter.css?param=<%=new Random().nextInt(100)%>">
+<link rel="stylesheet" href="/resource/css/admin/home.css?param=<%=new Random().nextInt(100)%>">
+<script type="text/javascript" charset="utf-8" src="/resource/editor/themes/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/resource/editor/themes/lang/zh-CN.js"></script>
+<script type="text/javascript" src="/resource/editor/themes/plugins/code/prettify.js"></script>
 
 <style type="text/css">
 	*{
@@ -54,9 +57,14 @@
 		color:#E0A800;
 	}
 </style>
-
+<script type="text/javascript">
+KindEditor.ready(function(K) {});
+</script>
 </head>
 <body>
+<form id="pageUrlForm">
+	<input type="hidden" value="${currUrl}" id="pageUrl" name="pageUrl"/>
+</form>
 	<nav class="nav justify-content-end bg-dark nav_top" id="nav_top">
 		<div class="logo">
 			Logo
@@ -87,15 +95,15 @@
   		
 <script type="text/javascript" src="/resource/bootstrap/jquery.min.1.12.4.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/admin/home.js?param=<%=new Random().nextInt(100)%>"></script>
 <script type="text/javascript" src="/resource/bootstrap/chart.min.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/ajaxfileupload.js"></script>
-<script type="text/javascript" src="/resource/js/admin/checkUserInfo.js"></script>
-<script type="text/javascript" src="/resource/js/admin/home.js"></script>
-<script charset="utf-8" src="/resource/editor/kindeditor-all-min.js"></script>
-<script charset="utf-8" src="/resource/editor/lang/zh-CN.js"></script>
+<script type="text/javascript" src="/resource/js/admin/checkUserInfo.js?param=<%=new Random().nextInt(100)%>"></script>
+
+
 
 <script type="text/javascript">
-
+	
 </script>
 </body>
 </html>

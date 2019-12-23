@@ -16,6 +16,13 @@ public class User {
 	private String url;
 	private Integer score;
 	private String role;
+	private String headimg;
+	public String getHeadimg() {
+		return headimg;
+	}
+	public void setHeadimg(String headimg) {
+		this.headimg = headimg;
+	}
 	public Integer getId() {
 		return id;
 	}

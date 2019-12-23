@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.wxl.cms.pojo.Article;
 import com.wxl.cms.pojo.User;
 
 public interface UserPersonCenterDao {
@@ -86,4 +87,11 @@ public interface UserPersonCenterDao {
 	 *
 	 */
 	Integer updateUser(@Param("user")User user);
+
+	List<Article> queryMyCollect(Integer id);
+
+	Integer collect(@Param("article_id")Integer article_id,@Param("user_id")Integer user_id);
+
+	Integer unCollect(@Param("article_id")Integer article_id,@Param("user_id")Integer user_id);
+
 }

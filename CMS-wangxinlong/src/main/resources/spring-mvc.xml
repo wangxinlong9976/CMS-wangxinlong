@@ -26,5 +26,22 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
-
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**"/>
+			<mvc:exclude-mapping path="/admin/"/>
+			<!-- <mvc:exclude-mapping path="/admin/toLogin"/> -->
+			<mvc:exclude-mapping path="/admin/register"/>
+			<mvc:exclude-mapping path="/admin/login"/>
+			<bean class="com.wxl.cms.interceptor.AdminInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/**"/>
+			<mvc:exclude-mapping path="/user/toLogin"/>
+			<mvc:exclude-mapping path="/user/toRegister"/>
+			<mvc:exclude-mapping path="/user/register"/>
+			<mvc:exclude-mapping path="/user/login"/>
+			<bean class="com.wxl.cms.interceptor.UserInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

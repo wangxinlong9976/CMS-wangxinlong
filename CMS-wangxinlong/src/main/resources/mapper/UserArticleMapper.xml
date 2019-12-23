@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxl.cms.dao.UserArticleDao">
+
+	<select id="queryAllArticle" resultMap="queryAllArticleMap">
+		select cms_article.*,cms_channel.*,cms_category.*,cms_user.*
+		from cms_article left join cms_channel on cms_article.channel_id=cms_channel.id
+		left join cms_category on cms_article.category_id=cms_category.id
+		left join cms_user on cms_article.user_id =cms_user.id where cms_article.hot>0
+		and cms_article.status = 1
+			<if test="keyWord!=null and keyWord!=''">
+				and cms_article.title like '%${keyWord}%'
+			</if>
+			<if test="channel!=null and channel!=0">
+				and cms_channel.id=${channel}
+			</if>
+			<if test="category!=null and category!=0">
+				and cms_category.id=${category}
+			</if>
+			<if test="status!=null and status!=0">
+			and cms_article.status=${status}
+			</if>
+	</select>
+	<resultMap type="Article" id="queryAllArticleMap">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/> 
+		<result property="content" column="content"/>  
+		<result property="picture" column="picture"/>
+		<result property="hits" column="hits"/>
+		<result property="updated" column="updated"/>
+		<result property="commentCnt" column="commentCnt"/>
+		<result property="hot" column="hot"/> 
+		<result property="created" column="created"/> 
+		<result property="status" column="status"/> 
+		<association property="channel" javaType="Channel">
+			<id property="id" column="1id"/>  
+			<result property="name" column="name"/>
+			<result property="description" column="description"/>
+			<result property="icon" column="icon"/>
+		</association>
+		<association property="category" javaType="Category">
+			<id property="id" column="id2"/>
+			<result property="name" column="name"/>
+			<result property="channel_id" column="channel_id"/>
+		</association>
+		<association property="user" javaType="User">
+			<id property="id" column="id3"/>
+			<result property="username" column="username"/>
+			<result property="nickname" column="nickname"/>
+		</association>
+	</resultMap>
+	
+	<insert id="addArticle">
+		insert into cms_article (title, picture, channel_id, 
+	      category_id, user_id, hits, 
+	      hot, status, deleted, 
+	      created, updated, commentCnt, 
+	      content)
+	    values (#{title}, #{picture}, #{channel_id}, 
+	      #{category_id}, #{user_id}, #{hits}, 
+	      #{hot}, #{status}, #{deleted}, 
+	      #{created}, #{updated}, #{commentCnt}, 
+	      #{content})
+	</insert>
+	
+	<select id="queryChannelAll" resultType="Channel">
+		select * from cms_channel
+	</select>
+	
+	<select id="selectArticle" resultType="Article">
+		select * from cms_article where user_id = #{id}
+	</select>
+	
+	
+	<select id="queryChannels" resultType="Channel">
+		select * from cms_channel
+	</select>
+	
+	<select id="queryCategorys" resultType="Category">
+		select * from cms_category where channel_id=#{id}
+	</select>
+	
+	<select id="queryNewArticle" resultMap="queryNewArticleMap">
+		select cms_article.*,cms_channel.*,cms_category.*,cms_user.*
+		from cms_article left join cms_channel on cms_article.channel_id=cms_channel.id
+		left join cms_category on cms_article.category_id=cms_category.id
+		left join cms_user on cms_article.user_id =cms_user.id 
+		where cms_article.status=1 order by cms_article.created desc
+	</select>
+	<resultMap type="Article" id="queryNewArticleMap">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/> 
+		<result property="content" column="content"/>  
+		<result property="picture" column="picture"/>
+		<result property="hits" column="hits"/>
+		<result property="updated" column="updated"/>
+		<result property="commentCnt" column="commentCnt"/>
+		<result property="hot" column="hot"/> 
+		<result property="created" column="created"/> 
+		<result property="status" column="status"/> 
+		<association property="channel" javaType="Channel">
+			<id property="id" column="1id"/>  
+			<result property="name" column="name"/>
+			<result property="description" column="description"/>
+			<result property="icon" column="icon"/>
+		</association>
+		<association property="category" javaType="Category">
+			<id property="id" column="id2"/>
+			<result property="name" column="name"/>
+			<result property="channel_id" column="channel_id"/>
+		</association>
+		<association property="user" javaType="User">
+			<id property="id" column="id3"/>
+			<result property="username" column="username"/>
+			<result property="nickname" column="nickname"/>
+		</association>
+	</resultMap>
+	<select id="queryArticleByChannelAndCategory" resultMap="queryArticleByChannelAndCategoryMap">
+		select cms_article.*,cms_channel.*,cms_category.*,cms_user.*
+		from cms_article left join cms_channel on cms_article.channel_id=cms_channel.id
+		left join cms_category on cms_article.category_id=cms_category.id
+		left join cms_user on cms_article.user_id =cms_user.id  where cms_article.status=1
+			<if test="channel_id!=null and channel_id!=0">
+				and cms_channel.id=#{channel_id}
+			</if>
+			<if test="category_id!=null and category_id!=0">
+				and cms_category.id = #{category_id}
+			</if>
+		
+	</select>
+	<resultMap type="Article" id="queryArticleByChannelAndCategoryMap">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/> 
+		<result property="content" column="content"/>  
+		<result property="picture" column="picture"/>
+		<result property="hits" column="hits"/>
+		<result property="updated" column="updated"/>
+		<result property="commentCnt" column="commentCnt"/>
+		<result property="hot" column="hot"/> 
+		<result property="created" column="created"/> 
+		<result property="status" column="status"/> 
+		<association property="channel" javaType="Channel">
+			<id property="id" column="1id"/>  
+			<result property="name" column="name"/>
+			<result property="description" column="description"/>
+			<result property="icon" column="icon"/>
+		</association>
+		<association property="category" javaType="Category">
+			<id property="id" column="id2"/>
+			<result property="name" column="name"/>
+			<result property="channel_id" column="channel_id"/>
+		</association>
+		<association property="user" javaType="User">
+			<id property="id" column="id3"/>
+			<result property="username" column="username"/>
+			<result property="nickname" column="nickname"/>
+		</association>
+	</resultMap>
+	
+	<select id="queryArticlByArticleId" resultMap="queryArticlByArticleIdMap">
+		select cms_article.*,cms_channel.*,cms_category.*,cms_user.*
+		from cms_article left join cms_channel on cms_article.channel_id=cms_channel.id
+		left join cms_category on cms_article.category_id=cms_category.id
+		left join cms_user on cms_article.user_id =cms_user.id where cms_article.id=#{article_id}
+		and cms_article.status=1
+	</select>
+	<resultMap type="Article" id="queryArticlByArticleIdMap">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/> 
+		<result property="content" column="content"/>  
+		<result property="picture" column="picture"/>
+		<result property="hits" column="hits"/>
+		<result property="updated" column="updated"/>
+		<result property="commentCnt" column="commentCnt"/>
+		<result property="hot" column="hot"/> 
+		<result property="created" column="created"/> 
+		<result property="status" column="status"/> 
+		<association property="channel" javaType="Channel">
+			<id property="id" column="1id"/>  
+			<result property="name" column="name"/>
+			<result property="description" column="description"/>
+			<result property="icon" column="icon"/>
+		</association>
+		<association property="category" javaType="Category">
+			<id property="id" column="id2"/>
+			<result property="name" column="name"/>
+			<result property="channel_id" column="channel_id"/>
+		</association>
+		<association property="user" javaType="User">
+			<id property="id" column="id3"/>
+			<result property="username" column="username"/>
+			<result property="nickname" column="nickname"/>
+		</association>
+	</resultMap>
+	
+	<select id="queryCategoryId" resultType="Integer">
+		select category_id from cms_article where id=#{id}
+	</select>
+	
+	<select id="queryArticleLike" resultMap="queryArticleLikeMap">
+		select cms_article.*,cms_channel.*,cms_category.*,cms_user.*
+		from cms_article left join cms_channel on cms_article.channel_id=cms_channel.id
+		left join cms_category on cms_article.category_id=cms_category.id
+		left join cms_user on cms_article.user_id =cms_user.id where cms_category.id=#{cid}
+		and cms_article.id!=#{cid} and cms_article.status=1
+	</select>
+	
+		<resultMap type="Article" id="queryArticleLikeMap">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/> 
+		<result property="content" column="content"/>  
+		<result property="picture" column="picture"/>
+		<result property="hits" column="hits"/>
+		<result property="updated" column="updated"/>
+		<result property="commentCnt" column="commentCnt"/>
+		<result property="hot" column="hot"/> 
+		<result property="created" column="created"/> 
+		<result property="status" column="status"/> 
+		<association property="channel" javaType="Channel">
+			<id property="id" column="1id"/>  
+			<result property="name" column="name"/>
+			<result property="description" column="description"/>
+			<result property="icon" column="icon"/>
+		</association>
+		<association property="category" javaType="Category">
+			<id property="id" column="id2"/>
+			<result property="name" column="name"/>
+			<result property="channel_id" column="channel_id"/>
+		</association>
+		<association property="user" javaType="User">
+			<id property="id" column="id3"/>
+			<result property="username" column="username"/>
+			<result property="nickname" column="nickname"/>
+			<result property="headimg" column="headimg"/>
+		</association>
+	</resultMap>
+	
+	
+	<select id="userHasCollect" resultType="int">
+	select count(1) from cms_user_article where user_id=#{user_id} and article_id=#{article_id} 
+	</select>
+</mapper>

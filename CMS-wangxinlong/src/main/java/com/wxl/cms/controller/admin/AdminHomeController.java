@@ -75,7 +75,12 @@ public class AdminHomeController {
 	 */
 	@RequestMapping("/welcome")
 	public String inWelcome() {
-		
+//		Model model,String url,HttpServletRequest request
+//		if(url!=null && !"".equals(url)) {
+//			
+//			return "redirect:"+url;
+//		}
+//		return "redirect:"+"/admin/home";
 		return "admin/modules/admin_welcome_content";
 	}
 	
